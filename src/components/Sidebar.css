@@ -1,0 +1,35 @@
+.sidebar {
+    height: 100vh;
+    padding-left: 20px;
+    background-color: rgb(240, 239, 239);
+    opacity: 0.8;
+    text-align: center;
+    border-radius: 3rem ;
+    align-items: stretch;
+    width: 170px;
+    height: 220px;
+    position: fixed;
+    right: 0px;
+    top: 100px;
+    z-index: 200;
+}
+.mod {
+    height: 300px;
+    width: 300px;
+    
+
+  }
+  .style{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    height: 250px;
+  }
+  .card-content{
+      display: flex;
+      justify-content: center;
+  }
+  .card-ainer{
+    display: flex;
+    justify-content: center;
+  }

@@ -1,0 +1,9 @@
+.crds{
+    
+    display: flex;
+    justify-content: center;
+}
+.pp{
+    text-decoration: underline;
+    text-shadow: 2px 2px 5px rgb(9, 4, 85);
+}
