@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "firstName": "malek",
+      "lastName": "bg",
+      "email": "malek@gmail",
+      "password": "0000",
+      "gender": "Male",
+      "size": "11",
+      "wheight": "11",
+      "skincolor": "11",
+      "pic": "C:\\fakepath\\Capture d’écran (18).png",
+      "id": 1
+    },
+    {
+      "firstName": "leila",
+      "lastName": "aaa",
+      "email": "maaa@gmail.com",
+      "password": "0000",
+      "gender": "Male",
+      "size": "77",
+      "wheight": "77",
+      "skincolor": "77",
+      "pic": "C:\\fakepath\\Capture d’écran (27).png",
+      "id": 2
+    },
+    {
+      "firstName": "jnjjnj",
+      "lastName": "jnjnkjnkj",
+      "email": "ooo@gmail",
+      "password": "00000",
+      "gender": "Male",
+      "size": "7777",
+      "wheight": "7777",
+      "skincolor": "7777",
+      "pic": "C:\\fakepath\\Capture d’écran (24).png",
+      "id": 3
+    },
+    {
+      "firstName": "radhwen",
+      "lastName": "nassar",
+      "email": "radh@ggg",
+      "password": "1111",
+      "gender": "Male",
+      "size": "212",
+      "wheight": "1212",
+      "skincolor": "122",
+      "pic": "",
+      "id": 4
+    },
+    {
+      "firstName": "khalil",
+      "lastName": "bouuuu",
+      "email": "khlil@gmail",
+      "password": "1111",
+      "gender": "Male",
+      "size": "65",
+      "wheight": "655",
+      "skincolor": "454",
+      "pic": "C:\\fakepath\\Capture d’écran (21).png",
+      "id": 5
+    }
+  ],
+  "categories": []
+}

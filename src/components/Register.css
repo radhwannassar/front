@@ -1,0 +1,40 @@
+.re{
+background-image: url("https://miro.medium.com/max/1920/1*j3RKwhPaS4R9mXGtt4tXEQ.jpeg");  
+width: 100%;
+height: 700px; 
+}
+.container{
+    padding:7.5rem;
+}
+.pr{
+background-image: url("https://i.pinimg.com/originals/13/77/71/137771986214fa78ace675b30b3b64a4.jpg");  
+width: 100%;
+height: 700px; 
+}
+.ppc{
+    background-image: url("https://images.pexels.com/photos/3689659/pexels-photo-3689659.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");  
+width: 100%;
+height: 300px; 
+position:static;
+top: 100px;
+background-repeat: no-repeat;
+background-size: cover;
+}
+.ppb{
+    position:absolute;
+    right: 0px;
+    border-radius: 5rem;
+}
+.prp{
+    background-color: rgb(65, 79, 158);  
+    width: 100%;
+    height: 300px; 
+    border-radius: 2rem;
+    position: center;
+    }
+.login
+{ padding-top: 10rem;
+    background-image: url("https://cdn.shopify.com/s/files/1/2036/7337/files/banner-1_2048x.jpg?v=1522581407");
+    width: 100%;
+height: 700px; 
+}
