@@ -10,13 +10,15 @@ import Itemcus_management  from "./components/Itemcus_management";
 import Logout from "./components/Logout";
 import PageInrouvable from "./components/PageIntrouvable";
 import ConnectedHome from "./components/ConnectedHome";
-import Categories from "./components/Categories";
-import "bootstrap/dist/css/bootstrap.min.css";
+import ManageCategories from "./components/ManageCategories";
 import FittingRoom from "./components/FittingRoom";
 import { UserProvider } from "./UserContext";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile";
+import ProfilePage from "./components/ProfilePage";
 import Item from "./components/Item";
+import ManageUsers from "./components/ManageUsers";
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <UserProvider>
@@ -31,14 +33,20 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            {<Route exact path="/Item_management/:id">
+            <Route exact path="/Item_management/:id">
               <Item_management />
-            </Route>}
-            {<Route exact path="/Itemcus_management/:id">
+            </Route>
+            <Route exact path="/Itemcus_management/:id">
               <Itemcus_management />
-            </Route>}
+            </Route>
+            <Route exact path="/ProfilePage">
+              <ProfilePage />
+            </Route>
             <Route exact path="/Profile">
               <Profile />
+            </Route>
+            <Route exact path="/ManageUsers">
+              <ManageUsers />
             </Route>
             <Route exact path="/Item">
               <Item />
@@ -52,8 +60,8 @@ function App() {
             <Route exact path="/Login">
               <Login />
             </Route>
-            <Route exact path="/Categories">
-              <Categories />
+            <Route exact path="/ManageCategories">
+              <ManageCategories />
             </Route>
             <Route exact path="/ConnectedHome">
               <ConnectedHome />

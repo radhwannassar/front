@@ -18,17 +18,9 @@ import "./Register.css";
 import MenuItem from "@material-ui/core/MenuItem";
 import { UserContext } from "../UserContext";
 import { useContext } from "react";
+import axios from "axios";
 
-const currencies = [
-  {
-    value: "Male",
-    label: "Male",
-  },
-  {
-    value: "Female",
-    label: "Female",
-  },
-];
+
 
 function Copyright() {
   return (
@@ -63,14 +55,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Register = () => {
-  const [currency, setCurrency] = React.useState("...");
+  
   const  uuser = useContext(UserContext);
-  const handleChange = (event) => {
-    setCurrency(event.target.value);
-  };
-
-  
-  
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -79,40 +65,40 @@ const Register = () => {
   const [size, setSize] = useState("");
   const [weight, setWeight] = useState("");
   const [skincolor, setSkinColor] = useState("");
-  const [profileImg, setprofileImg] = useState("");
+  const [profileImg, setprofileImg] = useState(null);
   const history = useHistory();
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = {
-      firstName,
-      lastName,
-      email,
-      password,
-      gender,
-      size,
-      weight,
-      skincolor,
-      profileImg,
+    const user =  new FormData();
+    user.append("firstName",firstName);
+    user.append("lastName",lastName); 
+    user.append("email",email);
+    user.append("password",password); 
+    user.append("gender",gender); 
+    user.append("size",size);
+    user.append("weight",weight); 
+    user.append("skincolor",skincolor); 
+    user.append("profileImg",profileImg); 
       
-    };
-    fetch("/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    }).then((response) => {
-      response.json()
-
-        .then((response) => { 
-          uuser.setEtat(true)
-        
-        });
-    });
-    history.push("/");
+    axios.post("/users",user).then(res=>console.log("success ")) 
+    
   };
+// fetch("/users", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(user),
+    // }).then((response) => {
+    //   response.json()
 
+    //     .then((response) => { 
+    //       uuser.setEtat(true)
+        
+    //     });
+    // });
+    // history.push("/");
   const classes = useStyles();
 
   return (
@@ -197,16 +183,13 @@ const Register = () => {
                 fullWidth
                 name="Gender"
                 label="Select"
-                value={currency}
-                onChange={handleChange}
                 helperText="Please select your Gender"
                 variant="outlined"
               >
-                {currencies.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
+                
+                  <MenuItem value="male">Male</MenuItem>
+                  <MenuItem value="female">Female</MenuItem>
+                
               </TextField>
             </Grid>
             <div class="row">
@@ -258,16 +241,13 @@ const Register = () => {
             </div>
 
             <Grid item xs={12}>
-              <TextField
-                type="file"
-                value={profileImg}
-                onChange={(e) => setprofileImg(e.target.value)}
-                variant="outlined"
-                required
-                fullWidth
-                id="profileImg"
-                autoComplete="profileImg"
-              ></TextField>
+            <input
+                    required
+                    type="file"
+                    
+                    onChange={(e) => setprofileImg(e.target.files[0])}
+                    name="picture"
+                  ></input>
             </Grid>
 
             <Grid item xs={12}>

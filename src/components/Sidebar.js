@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import { UserContext } from "../UserContext";
 import { useContext } from "react";
-
+import axios from "axios";
 
 Modal.setAppElement("#root");
 
 const Sidebar = () => {
   const [castName, setcastName] = useState("");
-  const [castImg, setcastImg] = useState("");
+  const [castImg, setcastImg] = useState(null);
   const  user = useContext(UserContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   
@@ -20,16 +20,23 @@ const Sidebar = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    const category = { castName, castImg };
-    fetch("/customizedCategories", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(category),
-    }).then((response) => {
+    const category = new FormData();
+     category.append("castName",castName);
+     category.append("castImg",castImg);
+    
+    
+  axios.post("/customizedCategories",category).then(res=>console.log("success "))
+
+    
+    // fetch("/customizedCategories", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(category),
+    // }).then((response) => {
       
-    });
+    // });
   };
   return (
     <div>
@@ -125,8 +132,8 @@ const Sidebar = () => {
                             <input
                               required
                               type="file"
-                              value={castImg}
-                              onChange={(e) => setcastImg(e.target.value)}
+                              
+                              onChange={(e) => setcastImg(e.target.files[0])}
                               name="picture"
                             ></input>
                           </button>

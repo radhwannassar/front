@@ -22,7 +22,7 @@ const Relaic = () => {
             <Link to={`/Item_management/${category.catName}`}>
               <div className="card-container ">
                 <div className="image-container">
-                  <img src="./photo/jeans.jpg" alt="" />
+                  <img src={category.catImg} alt="" />
                 </div>
                 <div className="card-content">
                   <div className="card-title">

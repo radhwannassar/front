@@ -21,7 +21,7 @@ const CustomizedCategories = () => {
         return res.json();
       })
       .then((data) => { 
-        setData(data);
+        setData(data); 
       });
   }, []);
   const handleClick = (_id) => {
@@ -35,11 +35,11 @@ const CustomizedCategories = () => {
   return (
     <div className="categories">
       {data.map((category) => (
-        <div key={category.id}>
+        <div>
           <Link to={`/Itemcus_management/${category._id}`}>
-            <div className="card-container ">
+            <div  key={category.id} className="card-container ">
               <div className="image-container">
-                <img src="./photo/jeans.jpg" alt="" />
+                <img src={category.castImg} alt="" />
               </div>
               <div className="card-content">
                 <div className="card-title">

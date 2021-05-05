@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -21,20 +20,18 @@ const useStyles = makeStyles({
 
 const Item_management = () => {
   const [data, setData] = useState([]);
-  
+  const [itemName, setitemName] = useState([]);
+  const [itemImg, setitemImg] = useState([]);
   const { id } = useParams();
-  
+
   const user = useContext(UserContext);
-    
-   
 
   useEffect(() => {
     fetch(`/categories/${id}`)
       .then((res) => {
         return res.json();
       })
-      .then((data) => { 
-        
+      .then((data) => {
         setData(data);
       });
   }, []);
@@ -44,68 +41,65 @@ const Item_management = () => {
     }).then((data) => {});
   };
 
-  //const senditem = (e,id) => {
-  //  const [item] = useState([]); 
-    //console.log(id)
-    //console.log(e.target.value);
-    // fetch(`/items/${id}/${e.target.value}`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(item),
-    // }).then((response) => {
-    //   console.log(response.status);
-    // });
-  //};
+  const senditem = (castName, _id) => {
+    const item = { itemName, itemImg };
+    fetch(`/items/cast/${_id}/${castName}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    }).then((response) => {
+      console.log(response.status);
+    });
+  };
 
   const classes = useStyles();
   return (
     <div>
-       
       <div className="categories">
-        {
-          data.map((item , index) => (
-              <div key={index}>
-             
-              <Card className={classes.root}>
-                <CardActionArea>
-                  <CardContent>
-                    <CardMedia height="250" />
-
-                    <img src="./photo/jacket.jpg" alt="" />
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button
-                    size="big"
-                    color="primary"
-                    onClick={() => handleClick(item._id, data.catName)}
-                  >
-                    Delete
-                  </Button>
-
-                  <h5>{item.itemName}</h5>
-                </CardActions>
-                <div className="categories">
-                  <div>
-                  
-                  
-                    <select>  
-                      { user.currentuser.user.customizedCategories && user.currentuser.user.customizedCategories.map((cast) => {
-                        return (
-                          <option>{cast.castName}</option>
-                        );
-                      })} 
-                    </select>
-                  </div>
+        {data.map((item, index) => (
+          <div key={index}>
+            <Card className={classes.root}>
+              <div className="image-container">
+                <div className="image-container">
+                  <img src="../photo/shirt.jpg" alt="" />
                 </div>
-              </Card>
-            </div>
-          ))}
+              </div>
+              <CardActionArea>
+                <CardContent>
+                  <CardMedia height="250" />
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button
+                  size="big"
+                  color="primary"
+                  onClick={() => handleClick(item._id, data.catName)}
+                >
+                  Delete
+                </Button>
+
+                <h5>{item.itemName}</h5>
+              </CardActions>
+              <div className="categories">
+                <div>
+                  <select>
+                    {user.currentuser.user.customizedCategories &&
+                      user.currentuser.user.customizedCategories.map((cast) => {
+                        return <option>{cast.castName}</option>;
+                      })}
+                  </select>
+                </div>
+              </div>
+              <Button > send</Button>
+            </Card>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
 export default Item_management;
+// onClick={() => senditem(cast.castName,item._id)}
