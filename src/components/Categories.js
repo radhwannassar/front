@@ -4,12 +4,18 @@ import "./Cards.css";
 
 const Categories = () => {
   const [catName, setcatName] = useState("");
-  const [catImg, setcatImg] = useState("");
-  
+  const [catImg, setcatImg] = useState([]);
+ 
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const category = { catName, catImg };
+    console.log(catImg)
+    const category=new  FormData()
+    category.append("catName",catName)
+    category.append("catImg",catImg)
+    // const category = { catName, catImg };
     fetch("/categories", {
       method: "POST",
       headers: {
@@ -46,9 +52,9 @@ const Categories = () => {
                   <input
                     required
                     type="file"
-                    value={catImg}
-                    onChange={(e) => setcatImg(e.target.value)}
-                    name="picture"
+                    
+                    onChange={(e) => setcatImg(e.target.files)}
+                    
                   ></input>
                 </div>
 

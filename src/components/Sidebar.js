@@ -20,6 +20,7 @@ const Sidebar = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const category = { castName, castImg };
     fetch("/customizedCategories", {
       method: "POST",
@@ -37,7 +38,7 @@ const Sidebar = () => {
         <>
           <div className="sidebar">
             <ui className="list-unstyled">
-              <Link to="/Profile">
+              <Link to="/ProfilePage">
                 <li>
                   <Button variant="contained" color="submit">
                     <img
@@ -45,7 +46,7 @@ const Sidebar = () => {
                       width="40px"
                       alt=""
                     ></img>{" "}
-                    <h3>Edit Profile</h3>
+                    <h3>Profile</h3>
                   </Button>
                 </li>
               </Link>

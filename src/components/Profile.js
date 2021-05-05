@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     const Profile =()=> {
     const user = useContext(UserContext);
     console.log(user.currentuser.user);
-    console.log(user.currentuser.user._id);
+    
   
 
     const { id } = useParams();
